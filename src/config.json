@@ -1,8 +1,8 @@
 {
   "dateOfBirth": {
     "day": {
-      "label": "Day",
-      "placeholder": "Enter Day",
+      "label": "",
+      "placeholder": "",
       "maxLength": "2",
       "minLength": "2",
       "required": true,

@@ -69,7 +69,7 @@ const DateInput = (props) => {
       <label htmlFor={inputId}>
         <span className="input-label card-name-label">
           {config.day.label}
-          {config.day.required ? <span className="mandatory">*</span> : ""}
+          {/* {config.day.required ? <span className="mandatory">*</span> : ""} */}
         </span>
         {children}
         <input
