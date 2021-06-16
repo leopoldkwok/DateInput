@@ -1,7 +1,7 @@
 import React, { useState, useLayoutEffect, useEffect } from "react";
 import PropTypes from "prop-types";
 
-const Input = (props) => {
+const DateInput = (props) => {
   const {
     config,
     inputValue,
@@ -32,12 +32,15 @@ const Input = (props) => {
   }, [defaultError]);
 
   const validate = (valueToTest) => {
-    const inputPattern = new RegExp(config.pattern);
+    const inputPattern = new RegExp(config.day.pattern);
     let newError = "";
     if (valueToTest && inputPattern && !inputPattern.test(valueToTest)) {
-      newError = config.invalidError;
-    } else if (config.required && (!valueToTest || !/\S/.test(valueToTest))) {
-      newError = config.emptyError;
+      newError = config.day.invalidError;
+    } else if (
+      config.day.required &&
+      (!valueToTest || !/\S/.test(valueToTest))
+    ) {
+      newError = config.day.emptyError;
     } else {
       newError = "";
     }
@@ -65,8 +68,8 @@ const Input = (props) => {
     <div className="form-item">
       <label htmlFor={inputId}>
         <span className="input-label card-name-label">
-          {config.label}
-          {config.required ? <span className="mandatory">*</span> : ""}
+          {config.day.label}
+          {config.day.required ? <span className="mandatory">*</span> : ""}
         </span>
         {children}
         <input
@@ -75,14 +78,14 @@ const Input = (props) => {
           tabIndex="0"
           className={error || invalid ? "invalid" : ""}
           aria-describedby={`${inputId}-error`}
-          aria-label={config.label}
-          placeholder={config.placeholder}
+          aria-label={config.day.label}
+          placeholder={config.day.placeholder}
           onChange={handleOnInputChanged}
           onBlur={handleFocusOut}
           value={value}
           ref={inputRef}
-          maxLength={config.maxLength}
-          minLength={config.minLength}
+          maxLength={config.day.maxLength}
+          minLength={config.day.minLength}
           aria-required="true"
           aria-invalid={!!error}
           aria-disabled={disabled}
@@ -96,7 +99,7 @@ const Input = (props) => {
   );
 };
 
-Input.propTypes = {
+DateInput.propTypes = {
   config: PropTypes.shape({}).isRequired,
   inputValue: PropTypes.string,
   defaultError: PropTypes.string,
@@ -108,7 +111,7 @@ Input.propTypes = {
   invalid: PropTypes.bool
 };
 
-Input.defaultProps = {
+DateInput.defaultProps = {
   inputValue: "",
   defaultError: "",
   validateInput: false,
@@ -117,4 +120,4 @@ Input.defaultProps = {
   invalid: false
 };
 
-export default Input;
+export default DateInput;

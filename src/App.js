@@ -1,30 +1,30 @@
 import { useState } from "react";
-import Input from "./Input";
+import DateInput from "./DateInput";
 import Config from "./config.json";
 import "./styles.css";
 
 export default function App() {
   const [validateForm] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
+    day: "",
     error: {
-      nameError: ""
+      dayError: ""
     }
   });
 
   const handleName = (value, error) => {
     const newData = { ...formData };
-    newData.name = value;
-    newData.error.nameError = error;
+    newData.day = value;
+    newData.error.dayError = error;
     setFormData(newData);
   };
 
   return (
     <div className="App">
-      <Input
-        config={Config.input}
+      <DateInput
+        config={Config.dateOfBirth}
         inputId="input-id"
-        inputValue={formData.name}
+        inputValue={formData.day}
         setInputValue={handleName}
         validateInput={validateForm}
       />

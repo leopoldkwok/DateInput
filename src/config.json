@@ -1,12 +1,14 @@
 {
-  "input": {
-    "label": "Name",
-    "placeholder": "Enter your name",
-    "maxLength": "10",
-    "minLength": "2",
-    "required": true,
-    "emptyError": "Please enter name",
-    "invalidError": "Please enter valid name",
-    "pattern": "^[ A-Za-z.,'-]*$"
+  "dateOfBirth": {
+    "day": {
+      "label": "Day",
+      "placeholder": "Enter Day",
+      "maxLength": "2",
+      "minLength": "2",
+      "required": true,
+      "emptyError": "Please enter Day",
+      "invalidError": "Please enter valid day",
+      "pattern": "[0-9]*"
+    }
   }
 }
